@@ -12,7 +12,7 @@ import {
   Plus,
   Workflow,
 } from 'lucide-react'
-import { PublicNavbar }  '@/components/layout/PublicNavbar'
+import { PublicNavbar } from '@/components/layout/PublicNavbar'
 import { CookieConsent } from '@/components/common/CookieConsent'
 import { openCookieSettings } from '@/utils/cookieConsent'
 
