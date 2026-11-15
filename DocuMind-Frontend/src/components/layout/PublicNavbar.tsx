@@ -1,0 +1,5 @@
+import { Link } from 'react-router-dom'
+import { AppLogo } from '@/components/common/AppLogo'
+import { ThemeToggle } from './ThemeToggle'
+export function PublicNavbar(){return <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90"><nav className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:px-6"><AppLogo/><div className="hidden flex-1 items-center justify-end gap-7 pr-6 text-sm font-medium md:flex"><a href="/#features" className="hover:text-primary">Features</a><a href="/#generate" className="hover:text-primary">Code &amp; diagrams</a><a href="/#how" className="hover:text-primary">How it works</a></div><div className="flex items-center gap-2"><ThemeToggle/><Link to="/login" className="hidden rounded-lg px-3 py-2 text-sm font-semibold sm:block">Sign in</Link><Link to="/register" className="rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-[#6245b7]">Get started</Link></div></nav></header>}
+
