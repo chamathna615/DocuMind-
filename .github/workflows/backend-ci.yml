@@ -23,3 +23,10 @@ jobs:
         run: find . -name "*.js" -not -path "./node_modules/*" -not -path "./uploads/*" -print0 | xargs -0 -n1 node --check
       - run: npm audit --audit-level=high
         continue-on-error: true
+
+          deploy:
+    needs: ci
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
