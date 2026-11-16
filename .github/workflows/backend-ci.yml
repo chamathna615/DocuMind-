@@ -24,7 +24,7 @@ jobs:
       - run: npm audit --audit-level=high
         continue-on-error: true
 
-          deploy:
+  deploy:
     needs: ci
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
