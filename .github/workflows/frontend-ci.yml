@@ -43,7 +43,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test --project=chromium
 
-        deploy:
+  deploy:
     needs: [test-build, e2e]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
