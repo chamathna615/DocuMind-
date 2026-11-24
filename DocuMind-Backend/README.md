@@ -36,3 +36,5 @@ Upload MP3, M4A, WAV, WEBM, MP4, or a text-based PDF. Audio uploads are converte
 OpenAI currently limits transcription uploads to 25 MB. The backend compresses recordings to 32 kbps mono MP3 and splits longer audio into smaller chunks, preferring detected silences. It passes the preceding transcript text as context for each next chunk and joins the chunk transcripts in order. See the current [OpenAI file transcription guide](https://developers.openai.com/api/docs/guides/speech-to-text#longer-inputs) for the endpoint limit and supported audio formats.
 
 Application upload limits are 100 MB for audio files, 500 MB for MP4 video, and 50 MB for PDF documents. PDFs are limited to 300 pages and 150,000 extracted text characters per study pack; split larger documents into smaller PDFs. A video must contain an audio stream. Empty or speech-free audio, PDFs with no selectable text, unsupported formats, unavailable FFmpeg tools, and OpenAI failures are reported as user-safe processing errors; provider details are not returned to the client.
+
+CI test
