@@ -1,7 +1,8 @@
 import type { ActivityLog, Role, UserStatus } from '@/types'
+import { apiUrl } from '@/api/http'
 
 async function adminRequest<T>(path: string, options: { method?: string; body?: unknown } = {}): Promise<T> {
-  const response = await fetch(`/api/admin${path}`, {
+  const response = await fetch(apiUrl(`/admin${path}`), {
     method: options.method ?? 'GET',
     credentials: 'include',
     headers: options.body === undefined ? undefined : { 'Content-Type': 'application/json' },

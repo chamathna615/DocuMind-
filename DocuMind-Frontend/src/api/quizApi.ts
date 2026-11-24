@@ -1,3 +1,5 @@
+import { apiUrl } from '@/api/http'
+
 // What the browser receives BEFORE grading (the server hides answers and keywords).
 export interface QuizQuestionPublic {
   id: string
@@ -23,7 +25,7 @@ export interface QuizAttemptDto {
 }
 
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(url, {
+  const response = await fetch(apiUrl(url), {
     credentials: 'include',
     ...options,
   })

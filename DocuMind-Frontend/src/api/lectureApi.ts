@@ -1,4 +1,5 @@
 import type { Lecture } from '@/types'
+import { apiUrl } from '@/api/http'
 
 export type LectureOutput = 'notes' | 'quiz' | 'tutorial'
 export type DownloadKind = 'notes' | 'tutorial' | 'quiz' | 'answer-key' | 'json' | 'pack'
@@ -47,7 +48,7 @@ interface BackendLecture {
 }
 
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(url, {
+  const response = await fetch(apiUrl(url), {
     credentials: 'include',
     ...options,
   })
@@ -160,7 +161,7 @@ export function uploadLecture(
     formData.append('outputs', input.outputs.join(','))
 
     const xhr = new XMLHttpRequest()
-    xhr.open('POST', '/api/lectures')
+    xhr.open('POST', apiUrl('/lectures'))
     xhr.withCredentials = true
 
     xhr.upload.onprogress = (event) => {
@@ -256,7 +257,7 @@ export async function downloadLectureFile(
   kind: DownloadKind,
   filename: string,
 ): Promise<void> {
-  const response = await fetch(`/api/lectures/${lectureId}/download/${kind}`, { credentials: 'include' })
+  const response = await fetch(apiUrl(`/lectures/${lectureId}/download/${kind}`), { credentials: 'include' })
 
   if (!response.ok) {
     const data = await response.json().catch(() => ({}))

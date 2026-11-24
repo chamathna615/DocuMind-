@@ -1,3 +1,5 @@
+import { apiUrl } from '@/api/http'
+
 export interface CodeOptions {
   explanation: boolean
   example: boolean
@@ -43,7 +45,7 @@ interface BackendCode {
 }
 
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(url, {
+  const response = await fetch(apiUrl(url), {
     credentials: 'include',
     ...options,
   })

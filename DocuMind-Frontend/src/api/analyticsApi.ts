@@ -1,3 +1,5 @@
+import { apiUrl } from '@/api/http'
+
 export interface MyAnalytics {
   totals: {
     lectures: number
@@ -25,7 +27,7 @@ export interface MyAnalytics {
 
 // GET /api/analytics/me
 export async function getMyAnalytics(): Promise<MyAnalytics> {
-  const response = await fetch('/api/analytics/me', { credentials: 'include' })
+  const response = await fetch(apiUrl('/analytics/me'), { credentials: 'include' })
   const data = await response.json().catch(() => ({}))
   if (!response.ok) throw new Error((data as { message?: string }).message || 'Unable to load analytics.')
   return (data as { analytics: MyAnalytics }).analytics

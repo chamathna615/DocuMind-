@@ -4,7 +4,13 @@ export const API_BASE_URL = configuredBase
   : '/api'
 
 export function apiUrl(path: string) {
-  return `${API_BASE_URL}/${path.replace(/^\/+/, '')}`
+  const normalizedPath = path.replace(/^\/+/, '')
+  const route = normalizedPath === 'api'
+    ? ''
+    : normalizedPath.startsWith('api/')
+      ? normalizedPath.slice('api/'.length)
+      : normalizedPath
+  return route ? `${API_BASE_URL}/${route}` : API_BASE_URL
 }
 
 // An error answered by the server. `code` is a machine-readable reason when the server sends one
